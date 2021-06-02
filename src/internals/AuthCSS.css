@@ -1,0 +1,37 @@
+/* ideally this will be replaced with css-in-js stuff */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.auth-box {
+  border: 1px solid #ebebeb;
+  padding: 48px;
+  margin: 48px;
+  border-radius: 10px;
+  min-width: 500px;
+}
+
+.auth-box h1 {
+  margin-top: 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  margin-top: 10px;
+}

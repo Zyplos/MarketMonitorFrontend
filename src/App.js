@@ -1,8 +1,13 @@
 import { Switch, Route, Link } from "react-router-dom";
+import useSWR from "swr";
+import useUser from "./internals/useUser";
 import LoginPage from "./pages/LoginPage";
+import Profile from "./pages/Profile";
 import RegisterPage from "./pages/RegisterPage";
 
 function App() {
+  const { user, isError } = useUser();
+
   return (
     <div>
       <Switch>
@@ -22,6 +27,10 @@ function App() {
 
         <Route path="/register">
           <RegisterPage />
+        </Route>
+
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </div>

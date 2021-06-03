@@ -9,7 +9,7 @@
 }
 
 .auth-box {
-  border: 1px solid #ebebeb;
+  border: 1px solid #cfcfcf;
   padding: 48px;
   margin: 48px;
   border-radius: 10px;
@@ -34,4 +34,11 @@ input[type="checkbox"] {
 
 button[type="submit"] {
   margin-top: 10px;
+}
+
+.form-error {
+  padding: 10px;
+  color: white;
+  background-color: #ff3e3e;
+  border-radius: 10px;
 }

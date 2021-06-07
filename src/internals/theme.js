@@ -23,11 +23,10 @@ export const theme = {
     heading: 1.125,
   },
   colors: {
-    text: "#fff",
-    background: "#0B0F11",
-    primary: "#A6F6AF",
-    secondary: "#3AAFB9",
-    tertiary: "97C8EB",
+    text: "#000",
+    background: "#F5F5F5",
+    primary: "#07c",
+    secondary: "#30c",
     muted: "#f6f6f6",
   },
   text: {

@@ -1,18 +1,11 @@
-const fetcherWithToken = (url, accessToken) =>
-  fetch(url, {
+const fetcherWithToken = (url) => {
+  const accessToken = localStorage.getItem("accessToken");
+  return fetch(url, {
     method: "GET",
     headers: {
       "x-access-token": accessToken,
     },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      return data;
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      return error;
-    });
+  }).then((response) => response.json());
+};
 
 export default fetcherWithToken;

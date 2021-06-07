@@ -3,12 +3,12 @@ import { Switch, Route, Link as RouterLink } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import RegisterPage from "./pages/RegisterPage";
-import Header from './components/Header';
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <Header></Header>
+      <Header />
       <Switch>
         <Route exact path="/">
           <Heading>temp home</Heading>

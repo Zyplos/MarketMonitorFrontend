@@ -1,7 +1,11 @@
 import { Link } from "@theme-ui/components";
 import { Link as RouterLink } from "react-router-dom";
 
+import useUser from "../internals/useUser";
+
 function Header() {
+  const { user, isError } = useUser();
+
   return (
     <div className="header">
       <Link className="logo" as={RouterLink} to="/profile">

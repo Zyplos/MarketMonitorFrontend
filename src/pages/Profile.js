@@ -3,13 +3,9 @@ import fetcherWithToken from "../internals/fetcherWithToken";
 import useUser from "../internals/useUser";
 
 function Profile() {
-  const accessToken = localStorage.getItem("accessToken");
   const { user, isError } = useUser();
   const { data: assetsData, assetsError } = useSWR(
-    [
-      process.env.REACT_APP_AUTH_API_BASEURL + "api/test/getAssetsOfUser",
-      accessToken,
-    ],
+    process.env.REACT_APP_AUTH_API_BASEURL + "api/test/getAssetsOfUser",
     fetcherWithToken
   );
 

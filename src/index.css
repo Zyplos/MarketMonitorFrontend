@@ -1,1 +1,44 @@
 @import-normalize;
+
+
+.header {
+    overflow: hidden;
+    background-color: white;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: #2d3030;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #70c244;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.sub-header {
+    float: right;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+}

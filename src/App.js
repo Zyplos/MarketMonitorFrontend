@@ -19,6 +19,9 @@ function App() {
           <p>
             <Link to="/register">/register</Link>
           </p>
+          <p>
+            <Link to="/profile">/profile</Link>
+          </p>
         </Route>
 
         <Route path="/login">

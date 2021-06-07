@@ -6,7 +6,14 @@ function Profile() {
 
   console.log(user, isError);
 
-  return <h1>profile</h1>;
+  return (
+    <div>
+      <p>user</p>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <p>error</p>
+      <pre>{JSON.stringify(isError, null, 2)}</pre>
+    </div>
+  );
 }
 
 export default Profile;

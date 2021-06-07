@@ -1,6 +1,6 @@
+import { Alert, Button, Heading, Input, Label } from "@theme-ui/components";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import useSWR from "swr";
 import AuthenticationLayout from "../internals/AuthenticationLayout";
 
 function LoginPage() {
@@ -33,39 +33,38 @@ function LoginPage() {
         }
       })
       .catch((error) => {
-        setPostData({ error });
+        console.log({ error: true, ...error });
+        setPostData({ error: true, ...error });
       });
   };
 
   return (
     <AuthenticationLayout>
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <Heading as="h1">Login</Heading>
         {["User Not found.", "Invalid Password!"].includes(
           postData.message
-        ) && <p className="form-error">Username or password incorrect.</p>}
+        ) && <Alert>Username or password incorrect.</Alert>}
         {postData.error && (
-          <p className="form-error">
-            Sorry, got an error trying to sign you in.
-          </p>
+          <Alert>Sorry, got an error trying to sign you in.</Alert>
         )}
-        <label htmlFor="email">Email</label>
-        <input
+        <Label htmlFor="email">Email</Label>
+        <Input
           type="text"
           name="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <Label htmlFor="password">Password</Label>
+        <Input
           type="password"
           name="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Log In</button>
+        <Button type="submit">Log In</Button>
       </form>
     </AuthenticationLayout>
   );

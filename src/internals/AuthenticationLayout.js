@@ -1,10 +1,28 @@
-import "./AuthCSS.css";
+/** @jsxImportSource theme-ui */
+import { Flex } from "@theme-ui/components";
 
 function AuthenticationLayout({ children }) {
   return (
-    <div className="auth-container">
-      <div className="auth-box">{children}</div>
-    </div>
+    <Flex
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        height: "100vh",
+      }}
+    >
+      <div
+        sx={{
+          border: "1px solid #cfcfcf",
+          padding: "48px",
+          margin: "48px",
+          borderRadius: "10px",
+          minWidth: "500px",
+        }}
+      >
+        {children}
+      </div>
+    </Flex>
   );
 }
 

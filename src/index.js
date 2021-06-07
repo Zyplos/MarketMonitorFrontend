@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { SWRConfig } from "swr";
 import { ThemeProvider } from "@theme-ui/theme-provider";
-import fetch from "cross-fetch";
 
 import App from "./App";
 import theme from "./internals/theme";

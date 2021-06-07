@@ -7,10 +7,10 @@ const fetcherWithToken = (url, accessToken) =>
       "x-access-token": accessToken,
     },
   })
-    // .then((response) => response.json())
+    .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
-      return data.body;
+      return data;
     })
     .catch((error) => {
       console.error("Error:", error);

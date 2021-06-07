@@ -1,3 +1,12 @@
+import {
+  Alert,
+  Box,
+  Button,
+  Checkbox,
+  Heading,
+  Input,
+  Label,
+} from "@theme-ui/components";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import AuthenticationLayout from "../internals/AuthenticationLayout";
@@ -33,31 +42,33 @@ function RegisterPage() {
   return (
     <AuthenticationLayout>
       <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
+        <Heading as="h1">Register</Heading>
         {postData.message && postData.message.includes("Failed") && (
-          <p className="form-error">Sorry, but that email is already in use.</p>
+          <Alert>Sorry, but that email is already in use.</Alert>
         )}
-        <label htmlFor="email">Email</label>
-        <input
+        <Label htmlFor="email">Email</Label>
+        <Input
           type="text"
           name="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <Label htmlFor="password">Password</Label>
+        <Input
           type="password"
           name="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div>
-          <input type="checkbox" id="horns" name="horns" />
-          <label htmlFor="horns">I agree to the terms and conditions.</label>
-        </div>
-        <button type="submit">Submit</button>
+        <Box>
+          <Label htmlFor="horns">
+            <Checkbox type="checkbox" id="horns" name="horns" /> I agree to the
+            terms and conditions.
+          </Label>
+        </Box>
+        <Button type="submit">Submit</Button>
       </form>
     </AuthenticationLayout>
   );

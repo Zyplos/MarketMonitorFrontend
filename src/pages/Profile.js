@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import useUser from "../internals/useUser";
 
 function Profile() {
@@ -8,9 +7,9 @@ function Profile() {
 
   return (
     <div>
-      <p>user</p>
+      <p>user object:</p>
       <pre>{JSON.stringify(user, null, 2)}</pre>
-      <p>error</p>
+      <p>error object:</p>
       <pre>{JSON.stringify(isError, null, 2)}</pre>
     </div>
   );

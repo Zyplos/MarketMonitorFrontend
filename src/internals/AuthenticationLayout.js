@@ -17,7 +17,6 @@ function AuthenticationLayout({ children }) {
           padding: "48px",
           margin: "48px",
           borderRadius: "10px",
-          minWidth: "500px",
         }}
       >
         {children}

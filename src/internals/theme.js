@@ -29,6 +29,11 @@ export const theme = {
     secondary: "#30c",
     muted: "#f6f6f6",
   },
+  text: {
+    error: {
+      color: "#ff3e3e",
+    },
+  },
   styles: {
     root: {
       fontFamily: "body",

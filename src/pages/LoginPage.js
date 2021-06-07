@@ -1,18 +1,19 @@
 import { Alert, Button, Heading, Input, Label } from "@theme-ui/components";
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { Redirect } from "react-router";
+import { mutate } from "swr";
 import AuthenticationLayout from "../internals/AuthenticationLayout";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [postData, setPostData] = useState({});
-  const history = useHistory();
 
   console.log("POSTDATA=====,", postData);
 
-  if (postData.id) {
-    history.push("/");
+  if (postData.accessToken) {
+    mutate(process.env.REACT_APP_AUTH_API_BASEURL + "api/test/user");
+    return <Redirect to="/profile" />;
   }
 
   const handleSubmit = (event) => {

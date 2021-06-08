@@ -25,13 +25,24 @@ export const theme = {
   colors: {
     text: "#000",
     background: "#F5F5F5",
-    primary: "#07c",
+    primary: "#70c244",
     secondary: "#30c",
     muted: "#f6f6f6",
+  },
+  sizes: {
+    container: "75%",
   },
   text: {
     error: {
       color: "#ff3e3e",
+    },
+  },
+  cards: {
+    primary: {
+      padding: 4,
+      borderRadius: 4,
+      bg: "white",
+      boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
     },
   },
   styles: {

@@ -1,19 +1,27 @@
 @import-normalize;
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
 .header {
     overflow: hidden;
     background-color: white;
     padding: 20px 10px;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .header a {
     float: left;
     color: #2d3030;
     text-align: center;
-    padding: 12px;
+    padding: 0 12px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 25px;
     border-radius: 4px;
 }
@@ -24,12 +32,9 @@
     color: #70c244;
 }
 
-.header a:hover {
-    text-decoration: underline;
-}
-
 .sub-header {
     float: right;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 500px) {
@@ -41,4 +46,19 @@
     .header-right {
       float: none;
     }
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: #6F6F6F;
+    text-align: center;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,.2);
+}
+
+.aboutLink {
+    color: #70c244 !important; 
 }

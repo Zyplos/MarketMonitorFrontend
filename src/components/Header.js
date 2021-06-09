@@ -1,7 +1,9 @@
+/** @jsxImportSource theme-ui */
+
 import { Link } from "@theme-ui/components";
 import { Link as RouterLink } from "react-router-dom";
-
 import useUser from "../internals/useUser";
+import './Header.css'
 
 function Header() {
     const { user, isError } = useUser();

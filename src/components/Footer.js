@@ -1,5 +1,6 @@
 import { Link } from "@theme-ui/components";
 import { Link as RouterLink } from "react-router-dom";
+import './Footer.css'
 
 function Footer() {
     //TODO: About us 

@@ -37,8 +37,8 @@ function Profile() {
   let dataView = <Heading as="h3" sx={{ my: 4 }}>
                     Your tracked assets will live here!
                  </Heading>
-
-  if(assetsData != null && assetsData.assets !== 'undefined' && assetsData.assets.length > 0) {
+  
+  if(assetsData && assetsData.assets && assetsData.assets.length > 0) {
       dataView = assetsData.assets.map((asset, index) => {
         return (
           <Card key={index} sx={{ mb: 3 }}>
@@ -47,7 +47,7 @@ function Profile() {
           </Card>
         );
       })
-  }
+  } 
   
   if(assetsError) {
     console.log('assetData encountered an error')

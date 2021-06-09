@@ -1,0 +1,39 @@
+.header {
+    overflow: hidden;
+    background-color: white;
+    padding: 20px 10px;
+    box-shadow: 0 0px 6px 4px rgba(0,0,0,.2);
+} 
+
+.header a {
+    float: left;
+    color: #2d3030;
+    text-align: center;
+    padding: 0 12px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #70c244;
+}
+
+.sub-header {
+    float: right;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+}

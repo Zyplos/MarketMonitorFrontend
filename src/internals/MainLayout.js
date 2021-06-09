@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 function MainLayout({ children }) {
   return (
-    <div sx={{ pb: 5 }}>
+    <div sx={{ }}>
       <Header />
       {children}
       <Footer />

@@ -3,7 +3,6 @@ import {
   Card,
   Container,
   Heading,
-  NavLink,
   Paragraph,
   Spinner,
   Text,
@@ -12,7 +11,6 @@ import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import MainLayout from "../internals/MainLayout";
 import useUser from "../internals/useUser";
-import {Link} from "react-router-dom"
 
 import FullBox from "../components/FullBox";
 
@@ -23,18 +21,41 @@ function Profile() {
     fetcherWithToken
   );
 
-  console.log(user, isError);
+  if(isError) {
+    console.log(isError)
+  }
 
-  // if (!user) {
-  //   return (
-  //     <FullBox useDims>
-  //       <Spinner />
-  //       <Text>Loading user profile.</Text>
-  //     </FullBox>
-  //   );
-  // }
+  if (!user) {
+    return (
+      <FullBox useDims>
+        <Spinner />
+        <Text>Loading user profile.</Text>
+      </FullBox>
+    );
+  }
 
-  const testData = {
+  let dataView = <Heading as="h3" sx={{ my: 4 }}>
+                    Your tracked assets will live here!
+                 </Heading>
+
+  if(assetsData != null && assetsData.assets !== 'undefined' && assetsData.assets.length > 0) {
+      dataView = assetsData.assets.map((asset, index) => {
+        return (
+          <Card key={index} sx={{ mb: 3 }}>
+            <Heading as="h3">{asset.ticker}</Heading>
+            <Text>{asset.name}</Text>
+          </Card>
+        );
+      })
+  }
+  
+  if(assetsError) {
+    console.log('assetData encountered an error')
+    console.log(assetsError)
+  }
+  
+
+  /* const testData = {
     assets: [
       {
         _id: "60bd92993084492542574d93",
@@ -72,20 +93,19 @@ function Profile() {
         ticker: "AAPL",
       },
     ],
-  };
+  }; */
 
   return (
     <MainLayout>
       <Container>
-        <Link to="/login">/login</Link>
-      <p>user object:</p>
+     {/*  <p>user object:</p>
         <pre>{JSON.stringify(user, null, 2)}</pre>
         <p>isError object:</p>
         <pre>{JSON.stringify(isError, null, 2)}</pre>
         <p>assetsData object:</p>
         <pre>{JSON.stringify(assetsData, null, 2)}</pre>
         <p>assetsError object:</p>
-        <pre>{JSON.stringify(assetsError, null, 2)}</pre>
+        <pre>{JSON.stringify(assetsError, null, 2)}</pre> */}
         <Heading as="h1" sx={{ my: 4 }}>
           Profile:
         </Heading>
@@ -99,15 +119,7 @@ function Profile() {
         <Heading as="h1" sx={{ my: 4 }}>
           Tracking:
         </Heading>
-        {testData.assets.map((asset, index) => {
-          return (
-            <Card key={index} sx={{ mb: 3 }}>
-              <Heading as="h3">{asset.ticker}</Heading>
-              <Text>{asset.name}</Text>
-            </Card>
-          );
-        })}
-        
+        { dataView }
       </Container>
     </MainLayout>
   );

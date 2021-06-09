@@ -49,9 +49,8 @@ a:hover {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    margin: 2em 0 0 0;
+    padding: .5em 0;
     width: 100%;
     background-color: white;
     color: #6F6F6F;
@@ -61,17 +60,4 @@ a:hover {
 
 .aboutLink {
     color: #70c244 !important; 
-}
-
-.assetTile {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-evenly; 
-    width: 350px;
-}
-
-.assetTile:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

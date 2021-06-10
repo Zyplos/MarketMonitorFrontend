@@ -12,7 +12,6 @@ function LoginPage() {
   console.log("POSTDATA=====,", postData);
 
   if (postData.accessToken) {
-    mutate(process.env.REACT_APP_AUTH_API_BASEURL + "api/test/user");
     return <Redirect to="/profile" />;
   }
 
@@ -28,10 +27,16 @@ function LoginPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setPostData(data);
         if (data.accessToken) {
+          console.log("===================LOGINPAGE :SETTING TOKEN");
           localStorage.setItem("accessToken", data.accessToken);
         }
+        mutate(process.env.REACT_APP_AUTH_API_BASEURL + "api/test/user").then(
+          () => {
+            console.log("==========LOGINPAGE MUTATED!! SETTING POST DATA");
+            setPostData(data);
+          }
+        );
       })
       .catch((error) => {
         console.log({ error: true, ...error });

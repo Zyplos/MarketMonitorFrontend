@@ -27,14 +27,18 @@ export const theme = {
     background: "#F5F5F5",
     primary: "#70c244",
     secondary: "#30c",
-    muted: "#f6f6f6",
+    muted: "#a3a3a3",
+    red: "#ff3e3e",
   },
   sizes: {
     container: "75%",
   },
   text: {
     error: {
-      color: "#ff3e3e",
+      color: "red",
+    },
+    muted: {
+      color: "muted",
     },
   },
   cards: {

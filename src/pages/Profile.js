@@ -43,7 +43,10 @@ function Profile() {
         return (
           <Card key={index} sx={{ mb: 3 }}>
             <Heading as="h3">{asset.ticker}</Heading>
-            <Text>{asset.name}</Text>
+            <Text sx={{ color: '#6F6F6F' }}>{asset.name + ' | '}</Text>
+            <Text sx={{ color: '#70c244' }}>{' $' + asset.rate}</Text>
+            <br></br>
+            <Text sx={{ color: '#6F6F6F' }}>{'As of: ' + asset.time}</Text>
           </Card>
         );
       })

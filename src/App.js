@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import AddAssets from "./pages/AddAssetsPage";
 import AboutUs from "./pages/AboutUsPage";
 import Home from "./pages/Home";
+import PrivateRoute from "./internals/PrivateRoute";
 
 function App() {
   return (
@@ -22,17 +23,17 @@ function App() {
           <RegisterPage />
         </Route>
 
-        <Route path="/profile">
+        <PrivateRoute path="/profile">
           <Profile />
-        </Route>
+        </PrivateRoute>
 
         <Route path="/aboutus">
           <AboutUs />
         </Route>
 
-        <Route path="/addassets">
+        <PrivateRoute path="/addassets">
           <AddAssets />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </div>
   );

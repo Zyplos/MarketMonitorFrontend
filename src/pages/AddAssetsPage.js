@@ -19,7 +19,7 @@ function AddAssets() {
   const { user, isError } = useUser();
   const { data: assetsData, error: assetsError } = useSWR(
     [
-      process.env.REACT_APP_AUTH_API_BASEURL + "api/test/getAssetsOfUser",
+      process.env.REACT_APP_AUTH_API_BASEURL + "api/test/getAllSymbols",
       accessToken,
     ],
     fetcherWithToken
@@ -46,12 +46,13 @@ function AddAssets() {
   }
 
   function AddAssets(_name, _ticker) {
-    const url = process.env.REACT_APP_AUTH_API_BASEURL + "api/test/addAssetToUser"
+    const url =
+      process.env.REACT_APP_AUTH_API_BASEURL + "api/test/addAssetToUser";
     const accessToken = localStorage.getItem("accessToken");
     const body = {
       name: _name,
-      ticker: _ticker
-    }
+      ticker: _ticker,
+    };
 
     fetch(url, {
       method: "POST",
@@ -59,12 +60,12 @@ function AddAssets() {
         "x-access-token": accessToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
-    .then((response) => console.log(response.json()))
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => console.log(response.json()))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
@@ -102,25 +103,31 @@ function AddAssets() {
               return null;
             }
             return null;
-        }).map((val, key) =>  {
-          return (
-            <Card key={key} sx={{ mb: 3,
-            display: 'flex',
-            justifyContent: 'space-between' }}>
-              <div>
-                <Heading as="h3">{val.ticker}</Heading>
-                <Text sx={{ color: '#6F6F6F' }}>{val.name}</Text>
-              </div>
-              <div>
-                <Button mr={2} onClick={() => AddAssets(val.name, val.ticker)} sx= {{
-                  cursor: 'pointer'
-                }}>Add</Button>
-              </div>
-            </Card>
-          );
-        })
-
-        }
+          })
+          .map((val, key) => {
+            return (
+              <Card
+                key={key}
+                sx={{ mb: 3, display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  <Heading as="h3">{val.ticker}</Heading>
+                  <Text sx={{ color: "#6F6F6F" }}>{val.name}</Text>
+                </div>
+                <div>
+                  <Button
+                    mr={2}
+                    onClick={() => AddAssets(val.name, val.ticker)}
+                    sx={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    Add
+                  </Button>
+                </div>
+              </Card>
+            );
+          })}
       </Container>
     </MainLayout>
   );

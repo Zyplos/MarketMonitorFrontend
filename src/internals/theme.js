@@ -27,7 +27,7 @@ export const theme = {
     background: "#F5F5F5",
     primary: "#70c244",
     secondary: "#30c",
-    muted: "#a3a3a3",
+    muted: "#6F6F6F",
     red: "#ff3e3e",
   },
   sizes: {

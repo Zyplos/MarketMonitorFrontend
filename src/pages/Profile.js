@@ -21,12 +21,19 @@ import FullBox from "../components/FullBox";
 function Profile() {
   const accessToken = localStorage.getItem("accessToken");
   const { user, isError } = useUser();
-  const { data: assetsData, error: assetsError } = useSWR(
+  const {
+    data: assetsData,
+    error: assetsError,
+    mutate: assetsMutate,
+  } = useSWR(
     [
       process.env.REACT_APP_AUTH_API_BASEURL + "api/test/getAssetsOfUser",
       accessToken,
     ],
-    fetcherWithToken
+    fetcherWithToken,
+    {
+      refreshInterval: 1000 * 60,
+    }
   );
 
   if (isError || assetsError) {
@@ -55,6 +62,38 @@ function Profile() {
     </Heading>
   );
 
+  function removeAssetFromUser(e) {
+    e.preventDefault();
+    const { name, ticker } = e.target.dataset;
+
+    const url =
+      process.env.REACT_APP_AUTH_API_BASEURL + "api/test/removeAssetFromUser";
+    const accessToken = localStorage.getItem("accessToken");
+    const body = { name, ticker };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "x-access-token": accessToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then(() => {
+        assetsMutate(
+          {
+            assets: assetsData.assets.filter(
+              (asset) => asset.ticker !== ticker
+            ),
+          },
+          false
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
   if (assetsData && assetsData.assets && assetsData.assets.length > 0) {
     dataView = assetsData.assets.map((asset, index) => {
       return (
@@ -64,10 +103,10 @@ function Profile() {
         >
           <div>
             <Heading as="h3">{asset.ticker}</Heading>
-            <Text sx={{ color: "#6F6F6F" }}>{asset.name + " | "}</Text>
-            <Text sx={{ color: "#70c244" }}>{" $" + asset.rate}</Text>
+            <Text sx={{ color: "muted" }}>{asset.name + " | "}</Text>
+            <Text sx={{ color: "primary" }}>{" $" + asset.rate}</Text>
             <br></br>
-            <Text sx={{ color: "#6F6F6F" }}>
+            <Text sx={{ color: "muted" }}>
               {"As of " +
                 new Date(asset.time).toLocaleString("en-US", {
                   timeZone: "EST",
@@ -77,7 +116,16 @@ function Profile() {
           <div>
             <Button
               mr={2}
-              sx={{ backgroundColor: "#eb3434", marginTop: "10px" }}
+              sx={{ backgroundColor: "secondary", marginTop: "10px" }}
+            >
+              Notify
+            </Button>
+            <Button
+              mr={2}
+              sx={{ backgroundColor: "red", marginTop: "10px" }}
+              data-name={asset.name}
+              data-ticker={asset.ticker}
+              onClick={removeAssetFromUser}
             >
               Remove
             </Button>
@@ -132,11 +180,16 @@ function Profile() {
     ],
   }; */
 
+  function simpleLogout(e) {
+    e.preventDefault();
+    localStorage.setItem("accessToken", null);
+    window.location.href = "/";
+  }
+
   return (
     <MainLayout>
       <Container>
-        {/* <Link to="/login">/login</Link>
-        <p>user object:</p>
+        {/* <p>user object:</p>
         <pre>{JSON.stringify(user, null, 2)}</pre>
         <p>isError object:</p>
         <pre>{JSON.stringify(isError, null, 2)}</pre>
@@ -162,6 +215,10 @@ function Profile() {
           Tracking:
         </Heading>
         {dataView}
+
+        <Button bg="red" onClick={simpleLogout}>
+          Log out
+        </Button>
       </Container>
     </MainLayout>
   );

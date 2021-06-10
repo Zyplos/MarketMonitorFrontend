@@ -2,6 +2,7 @@
 import {
   Card,
   Container,
+  Button,
   Heading,
   Paragraph,
   Spinner,
@@ -11,7 +12,6 @@ import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import MainLayout from "../internals/MainLayout";
 import useUser from "../internals/useUser";
-
 import FullBox from "../components/FullBox";
 
 function Profile() {
@@ -29,7 +29,7 @@ function Profile() {
     return (
       <FullBox useDims>
         <Spinner />
-        <Text>Loading user profile.</Text>
+        <Text>Loading user profile</Text>
       </FullBox>
     );
   }
@@ -41,12 +41,22 @@ function Profile() {
   if(assetsData && assetsData.assets && assetsData.assets.length > 0) {
       dataView = assetsData.assets.map((asset, index) => {
         return (
-          <Card key={index} sx={{ mb: 3 }}>
-            <Heading as="h3">{asset.ticker}</Heading>
-            <Text sx={{ color: '#6F6F6F' }}>{asset.name + ' | '}</Text>
-            <Text sx={{ color: '#70c244' }}>{' $' + asset.rate}</Text>
-            <br></br>
-            <Text sx={{ color: '#6F6F6F' }}>{'As of: ' + asset.time}</Text>
+          <Card key={index} sx={{ mb: 3,
+            display: 'flex',
+            justifyContent: 'space-between' }}>
+            <div>
+              <Heading as="h3">{asset.ticker}</Heading>
+              <Text sx={{ color: '#6F6F6F' }}>{asset.name + ' | '}</Text>
+              <Text sx={{ color: '#70c244' }}>{' $' + asset.rate}</Text>
+              <br></br>
+              <Text sx={{ color: '#6F6F6F' }}>{'As of ' + new Date(asset.time).toLocaleString("en-US", {timeZone: 'EST'})}</Text>
+            </div>
+            <div>
+              <Button mr={2} sx={{backgroundColor: '#eb3434',
+                marginTop: '10px'}}>
+                Remove
+              </Button>
+            </div>
           </Card>
         );
       })

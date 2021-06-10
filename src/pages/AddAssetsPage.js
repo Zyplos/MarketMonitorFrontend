@@ -102,7 +102,6 @@ function AddAssets() {
               return null;
             }
             return null;
-          }
         }).map((val, key) =>  {
           return (
             <Card key={key} sx={{ mb: 3,

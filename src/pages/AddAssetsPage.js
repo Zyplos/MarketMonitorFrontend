@@ -42,6 +42,28 @@ function AddAssets() {
     );
   }
 
+  function AddAssets(_name, _ticker) {
+    const url = process.env.REACT_APP_AUTH_API_BASEURL + "api/test/addAssetToUser" 
+    const accessToken = localStorage.getItem("accessToken");
+    const body = {
+      name: _name,
+      ticker: _ticker
+    }
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "x-access-token": accessToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body)
+    })
+    .then((response) => console.log(response.json()))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
   return (
     <MainLayout>
       <Container>
@@ -78,7 +100,9 @@ function AddAssets() {
                 <Text sx={{ color: '#6F6F6F' }}>{val.name}</Text>
               </div>
               <div>
-                <Button mr={2}>Add</Button>
+                <Button mr={2} onClick={() => AddAssets(val.name, val.ticker)} sx= {{
+                  cursor: 'pointer'
+                }}>Add</Button>
               </div>
             </Card>
           );

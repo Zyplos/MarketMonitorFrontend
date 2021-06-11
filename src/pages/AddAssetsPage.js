@@ -36,7 +36,7 @@ function AddAssets() {
     console.log(assetsError);
   }
 
-  if (!user || !assetsData) {
+  if (!user || !assetsData || !assetsData.symbols) {
     return (
       <FullBox useDims>
         <Spinner />
@@ -89,7 +89,7 @@ function AddAssets() {
             setSearchTerm(event.target.value);
           }}
         ></input>
-        {assetsData
+        {assetsData.symbols
           .filter((val) => {
             if (searchTerm === "") {
               return null;

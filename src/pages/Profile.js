@@ -102,13 +102,13 @@ function Profile() {
           sx={{ mb: 3, display: "flex", justifyContent: "space-between" }}
         >
           <div>
-            <Heading as="h3">{asset.ticker}</Heading>
-            <Text sx={{ color: "muted" }}>{asset.name + " | "}</Text>
-            <Text sx={{ color: "primary" }}>{" $" + asset.rate}</Text>
+            <Heading as="h3">{asset._id.ticker}</Heading>
+            <Text sx={{ color: "muted" }}>{asset._id.name + " | "}</Text>
+            <Text sx={{ color: "primary" }}>{" $" + asset._id.rate}</Text>
             <br></br>
             <Text sx={{ color: "muted" }}>
               {"As of " +
-                new Date(asset.time).toLocaleString("en-US", {
+                new Date(asset._id.time).toLocaleString("en-US", {
                   timeZone: "EST",
                 })}
             </Text>
@@ -123,8 +123,8 @@ function Profile() {
             <Button
               mr={2}
               sx={{ backgroundColor: "red", marginTop: "10px" }}
-              data-name={asset.name}
-              data-ticker={asset.ticker}
+              data-name={asset._id.name}
+              data-ticker={asset._id.ticker}
               onClick={removeAssetFromUser}
             >
               Remove

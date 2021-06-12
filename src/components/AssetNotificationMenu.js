@@ -69,7 +69,7 @@ function AssetNotificationsMenu(props) {
                         padding: '16px',
                         width: '200px'
                     }}>
-                        <Heading as="h6">Notifications for {ticker}</Heading>
+                        <Heading as="h6">{ticker} Notifications</Heading>
                         <Label htmlFor="min">Minimum</Label>
                         <Input
                         type="text"

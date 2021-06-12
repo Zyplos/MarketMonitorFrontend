@@ -1,25 +1,33 @@
 /** @jsxImportSource theme-ui */
-
-import { Link } from "@theme-ui/components";
+import { Fragment } from "react";
+import { Flex, Link, Text, NavLink } from "@theme-ui/components";
 import { Link as RouterLink } from "react-router-dom";
+import { ReactComponent as Logo } from "../assets/logo.svg";
 import useUser from "../internals/useUser";
-import "./Header.css";
 
 function Header() {
   const { user, isError } = useUser();
-  let button;
+  let userNavSection;
 
   if (!user || isError) {
-    button = (
+    userNavSection = (
       <Link as={RouterLink} to="/login">
         Log in
       </Link>
     );
   } else {
-    button = (
-      <Link as={RouterLink} to="/AddAssets">
-        Add Assets
-      </Link>
+    userNavSection = (
+      <Fragment>
+        <NavLink as={RouterLink} to="/tracking">
+          Tracking
+        </NavLink>
+        <NavLink as={RouterLink} to="/addassets">
+          Add Assets
+        </NavLink>
+        <NavLink as={RouterLink} to="/profile">
+          Profile
+        </NavLink>
+      </Fragment>
     );
   }
 
@@ -28,12 +36,16 @@ function Header() {
   }
 
   return (
-    <div className="header">
-      <Link className="logo" as={RouterLink} to="/profile">
-        Market Monitor
+    <Flex sx={{ alignItems: "center", p: 5 }}>
+      <Link as={RouterLink} to="/" sx={{ mr: 3 }}>
+        <Logo sx={{ display: "block" }} />
       </Link>
-      <div className="sub-header">{button}</div>
-    </div>
+      <Link as={RouterLink} to="/" sx={{ display: ["none", null, "block"] }}>
+        <Text variant="styles.h2">Market Monitor</Text>
+      </Link>
+
+      <div sx={{ ml: "auto" }}>{userNavSection}</div>
+    </Flex>
   );
 }
 

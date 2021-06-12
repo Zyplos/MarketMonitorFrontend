@@ -17,8 +17,8 @@ function Home() {
         </Link>
       </p>
       <p>
-        <Link as={RouterLink} to="/profile">
-          /profile
+        <Link as={RouterLink} to="/tracking">
+          /tracking
         </Link>
       </p>
     </Container>

@@ -23,11 +23,13 @@ export const theme = {
     heading: 1.125,
   },
   colors: {
-    text: "#000",
-    background: "#F5F5F5",
-    primary: "#70c244",
-    secondary: "#30c",
-    muted: "#6F6F6F",
+    text: "#fff",
+    background: "#16171B",
+    backgroundSecondary: "#1F2125",
+    backgroundTertiary: "#3E4450",
+    primary: "#0DD34F",
+    secondary: "#05B873",
+    muted: "#A0ACB4",
     red: "#ff3e3e",
   },
   sizes: {
@@ -41,12 +43,22 @@ export const theme = {
       color: "muted",
     },
   },
+  links: {
+    nav: {
+      px: 3,
+      py: 1,
+    },
+  },
+  radii: {
+    subtle: "10px",
+    main: "15px",
+    big: "30px",
+  },
   cards: {
     primary: {
       padding: 4,
-      borderRadius: 4,
-      bg: "white",
-      boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+      bg: "backgroundSecondary",
+      borderRadius: "big",
     },
   },
   styles: {

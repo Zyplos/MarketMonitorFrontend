@@ -7,6 +7,8 @@ import {
   Paragraph,
   Spinner,
   Text,
+  Flex,
+  Box,
 } from "@theme-ui/components";
 import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
@@ -61,6 +63,8 @@ function Tracking() {
     </Heading>
   );
 
+  console.log(assetsData);
+
   function removeAssetFromUser(e) {
     e.preventDefault();
     const { name, ticker } = e.target.dataset;
@@ -82,7 +86,7 @@ function Tracking() {
         assetsMutate(
           {
             assets: assetsData.assets.filter(
-              (asset) => asset.ticker !== ticker
+              (asset) => asset._id.ticker !== ticker
             ),
           },
           false
@@ -101,37 +105,55 @@ function Tracking() {
           timeZone: "EST",
         });
       return (
-        <Card
-          key={index}
-          sx={{ mb: 3, display: "flex", justifyContent: "space-between" }}
-        >
-          <div>
-            <Heading as="h3" mb={2}>
-              {asset._id.ticker}
-            </Heading>
-            <Text sx={{ color: "muted" }}>
-              {asset._id.name + " • " + timestamp}
-            </Text>
-            <Text sx={{ color: "primary" }}>{" $" + asset._id.rate}</Text>
-          </div>
-          <div>
-            <Button
-              mr={2}
-              sx={{ backgroundColor: "secondary", marginTop: "10px" }}
+        <div key={index} sx={{ mb: 5 }}>
+          <Card>
+            <Flex sx={{ alignItems: "center" }}>
+              <div>
+                <Heading as="h3" mb={2}>
+                  {asset._id.ticker}
+                </Heading>
+                <Text sx={{ color: "muted" }}>
+                  {asset._id.name + " • " + timestamp}
+                </Text>
+              </div>
+              <Text as="h1" sx={{ ml: "auto", color: "primary" }}>
+                {" $" + asset._id.rate}
+              </Text>
+            </Flex>
+          </Card>
+
+          <Flex sx={{ maxWidth: "90%", mx: "auto" }}>
+            <Flex
+              bg="primary"
+              py={2}
+              px={4}
+              sx={{
+                alignItems: "center",
+                borderBottomLeftRadius: "main",
+                borderBottomRightRadius: "main",
+              }}
             >
-              Notify
-            </Button>
-            <Button
-              mr={2}
-              sx={{ backgroundColor: "red", marginTop: "10px" }}
-              data-name={asset._id.name}
-              data-ticker={asset._id.ticker}
-              onClick={removeAssetFromUser}
-            >
-              Remove
-            </Button>
-          </div>
-        </Card>
+              Being Notified • Min: $240, Max: $689
+            </Flex>
+            <div sx={{ ml: "auto" }}>
+              <Button
+                mr={2}
+                sx={{ backgroundColor: "secondary", marginTop: "10px" }}
+              >
+                Notify
+              </Button>
+              <Button
+                mr={2}
+                sx={{ backgroundColor: "red", marginTop: "10px" }}
+                data-name={asset._id.name}
+                data-ticker={asset._id.ticker}
+                onClick={removeAssetFromUser}
+              >
+                Remove
+              </Button>
+            </div>
+          </Flex>
+        </div>
       );
     });
   }

@@ -6,6 +6,7 @@ import {
   Button,
   Spinner,
   Text,
+  Input,
 } from "@theme-ui/components";
 import FullBox from "../components/FullBox";
 import MainLayout from "../internals/MainLayout";
@@ -71,9 +72,9 @@ function AddAssets() {
   return (
     <MainLayout>
       <Container>
-        <input
+        <Input
           type="text"
-          placeholder="Search Ticker"
+          placeholder="Search by ticker, i.e. FB, AMZN, AAPL, NFLX, GOOG"
           sx={{
             margin: "20px 0 20px 0",
             width: "100%",
@@ -88,7 +89,7 @@ function AddAssets() {
             searchResultsCount = 0;
             setSearchTerm(event.target.value);
           }}
-        ></input>
+        ></Input>
         {assetsData.symbols
           .filter((val) => {
             if (searchTerm === "") {

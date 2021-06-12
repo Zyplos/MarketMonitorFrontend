@@ -18,6 +18,7 @@ import useUser from "../internals/useUser";
 import { ReactComponent as ErrorIcon } from "../assets/error.svg";
 
 import FullBox from "../components/FullBox";
+import AssetNotificationMenu from "../components/AssetNotificationMenu";
 
 function Tracking() {
   const accessToken = localStorage.getItem("accessToken");
@@ -136,12 +137,13 @@ function Tracking() {
               Being Notified • Min: $240, Max: $689
             </Flex>
             <div sx={{ ml: "auto" }}>
-              <Button
+              {/* <Button
                 mr={2}
                 sx={{ backgroundColor: "secondary", marginTop: "10px" }}
               >
                 Notify
-              </Button>
+              </Button> */}
+              <AssetNotificationMenu ticker={asset._id.ticker}></AssetNotificationMenu>
               <Button
                 mr={2}
                 sx={{ backgroundColor: "red", marginTop: "10px" }}

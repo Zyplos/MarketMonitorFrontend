@@ -46,7 +46,7 @@ function Profile() {
     <MainLayout>
       <Container>
         <Heading as="h1" sx={{ my: 4 }}>
-          Profile:
+          Profile
         </Heading>
         {user && user.email && (
           <div>

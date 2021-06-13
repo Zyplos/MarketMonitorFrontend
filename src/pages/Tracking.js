@@ -8,7 +8,6 @@ import {
   Spinner,
   Text,
   Flex,
-  Box,
 } from "@theme-ui/components";
 import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
@@ -124,29 +123,28 @@ function Tracking() {
           </Card>
 
           <Flex sx={{ maxWidth: "90%", mx: "auto" }}>
-            <Flex
-              bg="primary"
-              py={2}
-              px={4}
-              sx={{
-                alignItems: "center",
-                borderBottomLeftRadius: "main",
-                borderBottomRightRadius: "main",
-              }}
-            >
-              Being Notified • Min: $240, Max: $689
-            </Flex>
-            <div sx={{ ml: "auto" }}>
-              {/* <Button
-                mr={2}
-                sx={{ backgroundColor: "secondary", marginTop: "10px" }}
+            {(asset.min || asset.max) && (
+              <Flex
+                bg="primary"
+                py={2}
+                px={4}
+                sx={{
+                  alignItems: "center",
+                  borderBottomLeftRadius: "main",
+                  borderBottomRightRadius: "main",
+                }}
               >
-                Notify
-              </Button> */}
-              <AssetNotificationMenu ticker={asset._id.ticker}></AssetNotificationMenu>
+                Being Notified • {asset.min ? `Min: $${asset.min},` : ""}{" "}
+                {asset.max ? `Max: $${asset.max}` : ""}
+              </Flex>
+            )}
+            <div sx={{ ml: "auto", mt: 2 }}>
+              <AssetNotificationMenu
+                sx={{ display: "inline-block" }}
+                ticker={asset._id.ticker}
+              ></AssetNotificationMenu>
               <Button
-                mr={2}
-                sx={{ backgroundColor: "red", marginTop: "10px" }}
+                sx={{ backgroundColor: "red", ml: 2 }}
                 data-name={asset._id.name}
                 data-ticker={asset._id.ticker}
                 onClick={removeAssetFromUser}

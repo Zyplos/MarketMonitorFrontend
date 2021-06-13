@@ -3,6 +3,7 @@ const heading = {
   fontFamily: "heading",
   lineHeight: "heading",
   fontWeight: "heading",
+  mb: 3,
 };
 
 export const theme = {
@@ -42,6 +43,12 @@ export const theme = {
     muted: {
       color: "muted",
     },
+    heading: {
+      fontFamily: "heading",
+      fontWeight: "heading",
+      lineHeight: "heading",
+      mb: 3,
+    },
   },
   links: {
     nav: {
@@ -53,6 +60,26 @@ export const theme = {
     subtle: "10px",
     main: "15px",
     big: "30px",
+  },
+  buttons: {
+    primary: {
+      borderRadius: "subtle",
+      cursor: "pointer",
+    },
+    secondary: {
+      borderRadius: "subtle",
+      cursor: "pointer",
+      bg: "secondary",
+    },
+  },
+  forms: {
+    input: {
+      borderColor: "muted",
+      mb: 3,
+    },
+    checkbox: {
+      mb: 3,
+    },
   },
   cards: {
     primary: {

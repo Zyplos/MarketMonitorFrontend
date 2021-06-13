@@ -1,5 +1,8 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from "@theme-ui/components";
+
+import { Flex, NavLink } from "@theme-ui/components";
+import { Link as RouterLink } from "react-router-dom";
+import ResponsiveLogo from "../components/ResponsiveLogo";
 
 function AuthenticationLayout({ children }) {
   return (
@@ -8,15 +11,18 @@ function AuthenticationLayout({ children }) {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        height: "100vh",
+        height: [null, "100vh"],
+        padding: 3,
       }}
     >
+      <NavLink as={RouterLink} to="/" sx={{ mb: 3 }}>
+        <ResponsiveLogo />
+      </NavLink>
       <div
         sx={{
-          border: "1px solid #cfcfcf",
-          padding: "48px",
-          margin: "48px",
-          borderRadius: "10px",
+          backgroundColor: "backgroundSecondary",
+          padding: 4,
+          borderRadius: "main",
         }}
       >
         {children}

@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { Fragment } from "react";
-import { Flex, Link, Text, NavLink } from "@theme-ui/components";
+import { Flex, NavLink } from "@theme-ui/components";
 import { Link as RouterLink } from "react-router-dom";
-import { ReactComponent as Logo } from "../assets/logo.svg";
 import useUser from "../internals/useUser";
+import ResponsiveLogo from "../components/ResponsiveLogo";
 
 function Header() {
   const { user, isError } = useUser();
@@ -11,9 +11,14 @@ function Header() {
 
   if (!user || isError) {
     userNavSection = (
-      <Link as={RouterLink} to="/login">
-        Log in
-      </Link>
+      <Fragment>
+        <NavLink as={RouterLink} to="/register">
+          Register
+        </NavLink>
+        <NavLink as={RouterLink} to="/login">
+          Log in
+        </NavLink>
+      </Fragment>
     );
   } else {
     userNavSection = (
@@ -37,12 +42,9 @@ function Header() {
 
   return (
     <Flex sx={{ alignItems: "center", p: 5 }}>
-      <Link as={RouterLink} to="/" sx={{ mr: 3 }}>
-        <Logo sx={{ display: "block" }} />
-      </Link>
-      <Link as={RouterLink} to="/" sx={{ display: ["none", null, "block"] }}>
-        <Text variant="styles.h2">Market Monitor</Text>
-      </Link>
+      <NavLink as={RouterLink} to="/">
+        <ResponsiveLogo />
+      </NavLink>
 
       <div sx={{ ml: "auto" }}>{userNavSection}</div>
     </Flex>

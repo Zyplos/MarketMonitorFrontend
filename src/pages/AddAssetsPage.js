@@ -94,17 +94,17 @@ function AddAssets() {
           .filter((val) => {
             if (searchTerm === "") {
               return null;
-            } else if (
-              val.ticker.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              searchResultsCount++;
-              if (searchResultsCount < searchResultsMax) {
-                return val;
-              }
-              return null;
+            } else if (val.ticker.toLowerCase().includes(searchTerm.toLowerCase())){
+              return val;
             }
             return null;
           })
+          .sort(function(a, b) {
+            return b.ticker.length < a.ticker.length ? 1
+                :  b.ticker.length > a.ticker.length ? -1
+                :  0; 
+          })
+          .slice(0, searchResultsMax)
           .map((val, key) => {
             return (
               <Card

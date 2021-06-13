@@ -7,6 +7,7 @@ import {
   Spinner,
   Text,
 } from "@theme-ui/components";
+
 import MainLayout from "../internals/MainLayout";
 import useUser from "../internals/useUser";
 
@@ -48,6 +49,7 @@ function Profile() {
         <Heading as="h1" sx={{ my: 4 }}>
           Profile
         </Heading>
+
         {user && user.email && (
           <div>
             <Paragraph>

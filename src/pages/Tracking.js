@@ -10,6 +10,7 @@ import {
   Flex,
 } from "@theme-ui/components";
 import useSWR from "swr";
+import toast, { Toaster } from "react-hot-toast";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import MainLayout from "../internals/MainLayout";
 import useUser from "../internals/useUser";
@@ -18,6 +19,7 @@ import { ReactComponent as ErrorIcon } from "../assets/error.svg";
 
 import FullBox from "../components/FullBox";
 import AssetNotificationMenu from "../components/AssetNotificationMenu";
+import toastStyle from "../internals/toastStyle";
 
 function Tracking() {
   const accessToken = localStorage.getItem("accessToken");
@@ -83,6 +85,7 @@ function Tracking() {
       body: JSON.stringify(body),
     })
       .then(() => {
+        toast.success(`Removed ${ticker}.`);
         assetsMutate(
           {
             assets: assetsData.assets.filter(
@@ -93,6 +96,7 @@ function Tracking() {
         );
       })
       .catch((error) => {
+        toast.error(`Couldn't remove ${ticker}.`);
         console.error("Error:", error);
       });
   }
@@ -161,6 +165,7 @@ function Tracking() {
   return (
     <MainLayout>
       <Container>
+        <Toaster />
         <Heading as="h1" sx={{ my: 4 }}>
           Tracking
         </Heading>

@@ -8,12 +8,15 @@ import {
   Text,
   Input,
 } from "@theme-ui/components";
+import toast, { Toaster } from "react-hot-toast";
+
 import FullBox from "../components/FullBox";
 import MainLayout from "../internals/MainLayout";
 import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import useUser from "../internals/useUser";
 import { useState } from "react";
+import toastStyle from "../internals/toastStyle";
 
 function AddAssets() {
   const accessToken = localStorage.getItem("accessToken");
@@ -63,8 +66,22 @@ function AddAssets() {
       },
       body: JSON.stringify(body),
     })
-      .then((response) => console.log(response.json()))
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("====================", data);
+
+        if (data.message.includes("already tracked")) {
+          toast.error(`${_ticker} is already being tracked.`);
+          return;
+        } else if (data.message.includes("Only allowed")) {
+          toast.error(`Already tracking max number of assets.`);
+          return;
+        }
+
+        toast.success(`Added ${_ticker}.`);
+      })
       .catch((error) => {
+        toast.error(error);
         console.error("Error:", error);
       });
   }
@@ -72,6 +89,7 @@ function AddAssets() {
   return (
     <MainLayout>
       <Container>
+        <Toaster />
         <Input
           type="text"
           placeholder="Search by ticker, i.e. FB, AMZN, AAPL, NFLX, GOOG"
@@ -94,15 +112,19 @@ function AddAssets() {
           .filter((val) => {
             if (searchTerm === "") {
               return null;
-            } else if (val.ticker.toLowerCase().includes(searchTerm.toLowerCase())){
+            } else if (
+              val.ticker.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
               return val;
             }
             return null;
           })
-          .sort(function(a, b) {
-            return b.ticker.length < a.ticker.length ? 1
-                :  b.ticker.length > a.ticker.length ? -1
-                :  0; 
+          .sort(function (a, b) {
+            return b.ticker.length < a.ticker.length
+              ? 1
+              : b.ticker.length > a.ticker.length
+              ? -1
+              : 0;
           })
           .slice(0, searchResultsMax)
           .map((val, key) => {

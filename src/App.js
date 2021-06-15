@@ -2,8 +2,9 @@ import { Switch, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Tracking from "./pages/Tracking";
 import RegisterPage from "./pages/RegisterPage";
-import AddAssets from "./pages/AddAssetsPage";
-import AboutUs from "./pages/AboutUsPage";
+import AddAssetsPage from "./pages/AddAssetsPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoute from "./internals/PrivateRoute";
@@ -30,11 +31,19 @@ function App() {
         </PrivateRoute>
 
         <Route path="/aboutus">
-          <AboutUs />
+          <AboutUsPage />
+        </Route>
+
+        <Route path="/contactus">
+          <ContactUsPage />
         </Route>
 
         <PrivateRoute path="/addassets">
-          <AddAssets />
+          <AddAssetsPage />
+        </PrivateRoute>
+
+        <PrivateRoute path="/profile">
+          <Profile />
         </PrivateRoute>
 
         <PrivateRoute path="/profile">

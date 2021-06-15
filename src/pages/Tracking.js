@@ -20,6 +20,7 @@ import { ReactComponent as ErrorIcon } from "../assets/error.svg";
 import FullBox from "../components/FullBox";
 import AssetNotificationMenu from "../components/AssetNotificationMenu";
 import toastStyle from "../internals/toastStyle";
+import { Themed } from "theme-ui";
 
 function Tracking() {
   const accessToken = localStorage.getItem("accessToken");
@@ -108,53 +109,82 @@ function Tracking() {
         new Date(asset._id.time).toLocaleString("en-US", {
           timeZone: "EST",
         });
+
+      const AssetControls = () => {
+        return (
+          <>
+            <Button
+              sx={{ backgroundColor: "red" }}
+              data-name={asset._id.name}
+              data-ticker={asset._id.ticker}
+              onClick={removeAssetFromUser}
+            >
+              Remove
+            </Button>
+            <AssetNotificationMenu
+              sx={{ display: "inline-block", ml: 2 }}
+              ticker={asset._id.ticker}
+            ></AssetNotificationMenu>
+          </>
+        );
+      };
+
       return (
         <div key={index} sx={{ mb: 5 }}>
           <Card>
-            <Flex sx={{ alignItems: "center" }}>
-              <div>
-                <Heading as="h3" mb={2}>
-                  {asset._id.ticker}
-                </Heading>
-                <Text sx={{ color: "muted" }}>
-                  {asset._id.name + " • " + timestamp}
-                </Text>
+            <Flex
+              sx={{
+                alignItems: ["flex-start", null, "center"],
+                flexDirection: ["column", null, "row"],
+              }}
+            >
+              <div sx={{ flexGrow: "1", order: [2, null, 1] }}>
+                <Heading as="h3">{asset._id.ticker}</Heading>
+                <Paragraph sx={{ color: "muted", mb: 0 }}>
+                  {asset._id.name}
+                </Paragraph>
+                <Paragraph sx={{ color: "muted", mb: 0 }}>
+                  {timestamp}
+                </Paragraph>
               </div>
-              <Text as="h1" sx={{ ml: "auto", color: "primary" }}>
+              <Text
+                as="h1"
+                sx={{
+                  color: "primary",
+                  order: [1, null, 2],
+                  mb: [3, null, 0],
+                }}
+              >
                 {" $" + asset._id.rate}
               </Text>
             </Flex>
+            <div sx={{ display: ["flex", null, "none"], mt: 3 }}>
+              <AssetControls />
+            </div>
           </Card>
 
           <Flex sx={{ maxWidth: "90%", mx: "auto" }}>
             {(asset.min || asset.max) && (
               <Flex
-                bg="primary"
+                bg="secondary"
                 py={2}
                 px={4}
                 sx={{
                   alignItems: "center",
-                  borderBottomLeftRadius: "main",
-                  borderBottomRightRadius: "main",
+                  mt: [2, null, 0],
+                  borderRadius: ["big", null, "0"],
+                  borderBottomLeftRadius: ["big", null, "main"],
+                  borderBottomRightRadius: ["big", null, "main"],
+                  width: ["100%", null, "auto"],
                 }}
               >
-                Being Notified • {asset.min ? `Min: $${asset.min},` : ""}{" "}
+                Being Notified • {asset.min ? `Min: $${asset.min}` : ""}
+                {asset.min && asset.max ? ", " : " "}
                 {asset.max ? `Max: $${asset.max}` : ""}
               </Flex>
             )}
-            <div sx={{ ml: "auto", mt: 2 }}>
-              <AssetNotificationMenu
-                sx={{ display: "inline-block" }}
-                ticker={asset._id.ticker}
-              ></AssetNotificationMenu>
-              <Button
-                sx={{ backgroundColor: "red", ml: 2 }}
-                data-name={asset._id.name}
-                data-ticker={asset._id.ticker}
-                onClick={removeAssetFromUser}
-              >
-                Remove
-              </Button>
+            <div sx={{ ml: "auto", mt: 2, display: ["none", null, "block"] }}>
+              <AssetControls />
             </div>
           </Flex>
         </div>

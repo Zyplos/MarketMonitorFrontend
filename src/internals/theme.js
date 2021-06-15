@@ -37,6 +37,9 @@ export const theme = {
     container: "75%",
   },
   text: {
+    paragraph: {
+      mb: 3,
+    },
     error: {
       color: "red",
     },
@@ -53,7 +56,7 @@ export const theme = {
   links: {
     nav: {
       px: 3,
-      py: 1,
+      py: [3, 1],
     },
   },
   radii: {
@@ -74,6 +77,10 @@ export const theme = {
   },
   forms: {
     input: {
+      borderColor: "muted",
+      mb: 3,
+    },
+    textarea: {
       borderColor: "muted",
       mb: 3,
     },

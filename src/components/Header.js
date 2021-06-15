@@ -1,13 +1,18 @@
 /** @jsxImportSource theme-ui */
-import { Fragment } from "react";
-import { Flex, NavLink } from "@theme-ui/components";
+import { Fragment, useState } from "react";
+import { Close, Flex, NavLink, MenuButton } from "theme-ui";
 import { Link as RouterLink } from "react-router-dom";
 import useUser from "../internals/useUser";
 import ResponsiveLogo from "../components/ResponsiveLogo";
 
 function Header() {
   const { user, isError } = useUser();
+  const [isOpen, setOpen] = useState(false);
   let userNavSection;
+
+  function showNavbar() {
+    setOpen(!isOpen);
+  }
 
   if (!user || isError) {
     userNavSection = (
@@ -41,12 +46,51 @@ function Header() {
   }
 
   return (
-    <Flex sx={{ alignItems: "center", p: 5 }}>
+    <Flex
+      sx={{
+        alignItems: "center",
+        p: [2, 5],
+        flexWrap: "wrap",
+        flexDirection: ["column", "row"],
+      }}
+    >
       <NavLink as={RouterLink} to="/">
         <ResponsiveLogo />
       </NavLink>
 
-      <div sx={{ ml: "auto" }}>{userNavSection}</div>
+      <div
+        sx={{
+          ml: [null, "auto"],
+          display: [isOpen ? "flex" : "none", "flex"],
+          flexDirection: ["column", "row"],
+          width: ["100%", "auto"],
+          bg: ["backgroundSecondary", "background"],
+        }}
+      >
+        {userNavSection}
+      </div>
+
+      <div
+        id="nav-toggle"
+        sx={{
+          position: "absolute",
+          top: "24px",
+          left: "24px",
+          padding: 2,
+          backgroundColor: "backgroundSecondary",
+          display: ["block", "none"],
+          zIndex: 100,
+          width: "48px",
+          height: "48px",
+        }}
+        onClick={showNavbar}
+      >
+        {isOpen ? (
+          <Close color="white" />
+        ) : (
+          <MenuButton sx={{ display: "block", fill: "white" }} />
+        )}
+      </div>
     </Flex>
   );
 }

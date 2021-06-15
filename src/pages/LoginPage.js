@@ -12,7 +12,7 @@ function LoginPage() {
   console.log("POSTDATA=====,", postData);
 
   if (postData.accessToken) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/tracking" />;
   }
 
   const handleSubmit = (event) => {

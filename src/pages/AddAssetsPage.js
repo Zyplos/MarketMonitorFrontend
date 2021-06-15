@@ -89,6 +89,9 @@ function AddAssets() {
   return (
     <MainLayout>
       <Container>
+        <Heading as="h1" sx={{ my: 4 }}>
+          Add Assets
+        </Heading>
         <Toaster />
         <Input
           type="text"
@@ -131,14 +134,20 @@ function AddAssets() {
             return (
               <Card
                 key={key}
-                sx={{ mb: 3, display: "flex", justifyContent: "space-between" }}
+                sx={{
+                  mb: 3,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  flexDirection: ["column", "row"],
+                }}
               >
                 <div>
                   <Heading as="h3">{val.ticker}</Heading>
-                  <Text sx={{ color: "#6F6F6F" }}>{val.name}</Text>
+                  <Text sx={{ color: "muted" }}>{val.name}</Text>
                 </div>
                 <div>
                   <Button
+                    mt={[3, 0]}
                     mr={2}
                     onClick={() => AddAssets(val.name, val.ticker)}
                     sx={{

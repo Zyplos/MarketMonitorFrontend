@@ -4,7 +4,7 @@ import Dropdown from "./Dropdown";
 import { Button, Heading, Input, Label } from "@theme-ui/components";
 import { useState } from "react";
 
-function AssetNotificationsMenu(props) {
+function AssetNotificationsMenu({ revalidateAssetData, ...props }) {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
   const ticker = props.ticker;
@@ -28,6 +28,9 @@ function AssetNotificationsMenu(props) {
         body: JSON.stringify(body),
       })
         .then((response) => console.log(response.json()))
+        .then(() => {
+          revalidateAssetData();
+        })
         .catch((error) => {
           console.error("Error:", error);
         });
@@ -48,6 +51,9 @@ function AssetNotificationsMenu(props) {
         body: JSON.stringify(body),
       })
         .then((response) => console.log(response.json()))
+        .then(() => {
+          revalidateAssetData();
+        })
         .catch((error) => {
           console.error("Error:", error);
         });
@@ -67,14 +73,14 @@ function AssetNotificationsMenu(props) {
           <Heading as="h6">{ticker} Notifications</Heading>
           <Label htmlFor="min">Minimum</Label>
           <Input
-            type="text"
+            type="number"
             name="min"
             value={min}
             onChange={(e) => setMin(e.target.value)}
           />
           <Label htmlFor="max">Maximum</Label>
           <Input
-            type="text"
+            type="number"
             name="max"
             value={max}
             onChange={(e) => setMax(e.target.value)}

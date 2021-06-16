@@ -4,13 +4,7 @@ import {
   Paragraph,
   Label,
   Input,
-  Box,
-  Checkbox,
-  Select,
   Textarea,
-  Flex,
-  Radio,
-  Slider,
   Button,
 } from "theme-ui";
 import MainLayout from "../internals/MainLayout";

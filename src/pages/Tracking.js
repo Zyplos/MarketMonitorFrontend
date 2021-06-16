@@ -19,8 +19,6 @@ import { ReactComponent as ErrorIcon } from "../assets/error.svg";
 
 import FullBox from "../components/FullBox";
 import AssetNotificationMenu from "../components/AssetNotificationMenu";
-import toastStyle from "../internals/toastStyle";
-import { Themed } from "theme-ui";
 
 function Tracking() {
   const accessToken = localStorage.getItem("accessToken");
@@ -39,6 +37,11 @@ function Tracking() {
       refreshInterval: 1000 * 60,
     }
   );
+
+  function revalidateAssetData(newData) {
+    console.log("=========ASSETNOTIF REVALIDATING DATA ", newData);
+    assetsMutate();
+  }
 
   if (isError || assetsError) {
     return (
@@ -124,6 +127,7 @@ function Tracking() {
             <AssetNotificationMenu
               sx={{ display: "inline-block", ml: 2 }}
               ticker={asset._id.ticker}
+              revalidateAssetData={revalidateAssetData}
             ></AssetNotificationMenu>
           </>
         );

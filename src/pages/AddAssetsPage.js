@@ -16,7 +16,6 @@ import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import useUser from "../internals/useUser";
 import { useState } from "react";
-import toastStyle from "../internals/toastStyle";
 
 function AddAssets() {
   const accessToken = localStorage.getItem("accessToken");

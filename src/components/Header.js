@@ -49,7 +49,8 @@ function Header() {
     <Flex
       sx={{
         alignItems: "center",
-        p: [2, 5],
+        px: [2, 5],
+        py: [2, 4],
         flexWrap: "wrap",
         flexDirection: ["column", "row"],
       }}

@@ -1,14 +1,15 @@
 /** @jsxImportSource theme-ui */
+import { Flex } from "@theme-ui/components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function MainLayout({ children }) {
   return (
-    <div sx={{ }}>
+    <Flex sx={{ flexDirection: "column", height: "100%" }}>
       <Header />
-      {children}
+      <div sx={{ flexGrow: "1" }}>{children}</div>
       <Footer />
-    </div>
+    </Flex>
   );
 }
 

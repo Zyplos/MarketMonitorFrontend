@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <div>
+    <>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -54,7 +54,7 @@ function App() {
           <NotFoundPage />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 }
 

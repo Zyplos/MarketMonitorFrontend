@@ -1,13 +1,15 @@
 @import-normalize;
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-MainLayout:hover {
-    padding-bottom: 100%;
+html,
+body,
+#root {
+  height: 100%;
 }

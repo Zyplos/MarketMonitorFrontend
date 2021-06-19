@@ -111,7 +111,7 @@ function Tracking() {
         "As of " +
         new Date(asset._id.time).toLocaleString("en-US", {
           timeZone: "EST",
-        });
+        }) + " (ET)";
 
       const AssetControls = () => {
         return (

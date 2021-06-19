@@ -1,20 +1,14 @@
 /** @jsxImportSource theme-ui */
-import { Link } from "@theme-ui/components";
-import { Link as RouterLink } from "react-router-dom";
+import ThemedRouterLink from "./ThemedRouterLink";
 
 function Footer() {
   return (
     <div sx={{ p: 3, textAlign: "center", bg: "backgroundSecondary" }}>
       <p>
         MarketMonitor is a student project. Learn more{" "}
-        <Link className="aboutLink" as={RouterLink} to="/aboutus">
-          about us
-        </Link>
-        , or{" "}
-        <Link className="aboutLink" as={RouterLink} to="/contactus">
-          contact us
-        </Link>{" "}
-        with any comments or concerns.
+        <ThemedRouterLink to="/aboutus">about us</ThemedRouterLink>, or{" "}
+        <ThemedRouterLink to="/contactus">contact us</ThemedRouterLink> with any
+        comments or concerns.
       </p>
     </div>
   );

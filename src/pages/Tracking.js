@@ -128,6 +128,7 @@ function Tracking() {
               sx={{ display: "inline-block", ml: 2 }}
               ticker={asset._id.ticker}
               revalidateAssetData={revalidateAssetData}
+              toast={toast}
             ></AssetNotificationMenu>
           </>
         );

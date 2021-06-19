@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { Fragment, useState } from "react";
-import { Close, Flex, NavLink, MenuButton } from "theme-ui";
-import { Link as RouterLink } from "react-router-dom";
+import { Close, Flex, MenuButton } from "theme-ui";
 import useUser from "../internals/useUser";
 import ResponsiveLogo from "../components/ResponsiveLogo";
+import ThemedRouterNavLink from "./ThemedRouterNavLink";
 
 function Header() {
   const { user, isError } = useUser();
@@ -17,26 +17,16 @@ function Header() {
   if (!user || isError) {
     userNavSection = (
       <Fragment>
-        <NavLink as={RouterLink} to="/register">
-          Register
-        </NavLink>
-        <NavLink as={RouterLink} to="/login">
-          Log in
-        </NavLink>
+        <ThemedRouterNavLink to="/register">Register</ThemedRouterNavLink>
+        <ThemedRouterNavLink to="/login">Log in</ThemedRouterNavLink>
       </Fragment>
     );
   } else {
     userNavSection = (
       <Fragment>
-        <NavLink as={RouterLink} to="/tracking">
-          Tracking
-        </NavLink>
-        <NavLink as={RouterLink} to="/addassets">
-          Add Assets
-        </NavLink>
-        <NavLink as={RouterLink} to="/profile">
-          Profile
-        </NavLink>
+        <ThemedRouterNavLink to="/tracking">Tracking</ThemedRouterNavLink>
+        <ThemedRouterNavLink to="/addassets">Add Assets</ThemedRouterNavLink>
+        <ThemedRouterNavLink to="/profile">Profile</ThemedRouterNavLink>
       </Fragment>
     );
   }
@@ -55,9 +45,9 @@ function Header() {
         flexDirection: ["column", "row"],
       }}
     >
-      <NavLink as={RouterLink} to="/">
+      <ThemedRouterNavLink to="/">
         <ResponsiveLogo />
-      </NavLink>
+      </ThemedRouterNavLink>
 
       <div
         sx={{

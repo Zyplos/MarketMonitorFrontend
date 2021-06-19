@@ -1,14 +1,8 @@
 /** @jsxImportSource theme-ui */
-import {
-  Container,
-  Heading,
-  Flex,
-  Paragraph,
-  Button,
-} from "@theme-ui/components";
-import { Link as RouterLink } from "react-router-dom";
+import { Heading, Flex, Paragraph } from "@theme-ui/components";
 import MainLayout from "../internals/MainLayout";
 import useUser from "../internals/useUser";
+import ThemedRouterButtonLink from "../components/ThemedRouterButtonLink";
 import HomeHeroImage from "../assets/home-hero.png";
 
 function Home() {
@@ -18,25 +12,22 @@ function Home() {
   if (!user || isError) {
     homeButtons = (
       <>
-        <Button as={RouterLink} to="/register">
-          Register
-        </Button>
-        <Button
+        <ThemedRouterButtonLink to="/register">Register</ThemedRouterButtonLink>
+        <ThemedRouterButtonLink
           bg="backgroundTertiary"
-          as={RouterLink}
           to="/login"
           sx={{ ml: 2 }}
         >
           Login
-        </Button>
+        </ThemedRouterButtonLink>
       </>
     );
   } else {
     homeButtons = (
       <>
-        <Button as={RouterLink} to="/tracking">
+        <ThemedRouterButtonLink to="/tracking">
           View Assets
-        </Button>
+        </ThemedRouterButtonLink>
       </>
     );
   }

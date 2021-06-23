@@ -37,23 +37,23 @@ const LinkIcon = () => {
   return <LinkSvg sx={iconStyles} />;
 };
 
-// andrew, enoc, wael, angel
-
 function AboutUs() {
   return (
     <MainLayout>
-      <Container>
+      <Container mb={5}>
         <Heading as="h1" sx={{ my: 4 }}>
           About Us
         </Heading>
 
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-          consequuntur possimus suscipit voluptatem enim nemo similique quam
-          molestiae omnis porro?
+          MarketMonitor is a tool for monitoring stock prices. It was created to
+          help trading enthusiasts easily receive alerts on stock price changes.
+          Add a stock to your watchlist and then set price limits that will
+          trigger notifications once the stock price rises or drops. Create an
+          account to get started!
         </Paragraph>
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, rerum.
+          MarketMonitor was created by a team of four students:
         </Paragraph>
 
         <Grid

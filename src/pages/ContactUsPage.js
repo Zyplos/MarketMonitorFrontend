@@ -18,9 +18,8 @@ function ContactUsPage() {
         </Heading>
 
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          dolorum rem doloribus exercitationem quos eaque iste commodi a illo
-          dignissimos?
+          Feel free to contact the MarketMonitor team with any questions,
+          suggestions, or concerns. If you found a bug, please report it to us!
         </Paragraph>
 
         <form>

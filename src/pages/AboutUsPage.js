@@ -50,7 +50,7 @@ function AboutUs() {
           help trading enthusiasts easily receive alerts on stock price changes.
           Add a stock to your watchlist and then set price limits that will
           trigger notifications once the stock price rises or drops. Create an
-          account to get started! Also, download our mobile application on Android.
+          account or download our Android app to get started.
         </Paragraph>
         <Paragraph>
           MarketMonitor was created by a team of four students:

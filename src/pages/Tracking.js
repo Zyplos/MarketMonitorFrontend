@@ -39,7 +39,6 @@ function Tracking() {
   );
 
   function revalidateAssetData(newData) {
-    console.log("=========ASSETNOTIF REVALIDATING DATA ", newData);
     assetsMutate();
   }
 
@@ -68,8 +67,6 @@ function Tracking() {
       Your tracked assets will live here!
     </Heading>
   );
-
-  console.log(assetsData);
 
   function removeAssetFromUser(e) {
     e.preventDefault();

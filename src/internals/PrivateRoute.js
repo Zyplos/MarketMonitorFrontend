@@ -5,8 +5,7 @@ import useUser from "./useUser";
 
 // https://reactrouter.com/web/example/auth-workflow
 function PrivateRoute({ children, ...rest }) {
-  let { user, isLoading, isError } = useUser();
-  console.log("====PRIVATE ROUTE", user, isLoading, isError);
+  let { isLoading, isError } = useUser();
 
   if (isLoading) {
     return (
@@ -15,10 +14,6 @@ function PrivateRoute({ children, ...rest }) {
       </FullBox>
     );
   }
-
-  // if(isError) {
-
-  // }
 
   return (
     <Route

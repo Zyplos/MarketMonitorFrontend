@@ -9,8 +9,6 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [postData, setPostData] = useState({});
 
-  console.log("POSTDATA=====,", postData);
-
   if (postData.accessToken) {
     return <Redirect to="/tracking" />;
   }
@@ -28,18 +26,15 @@ function LoginPage() {
       .then((response) => response.json())
       .then((data) => {
         if (data.accessToken) {
-          console.log("===================LOGINPAGE :SETTING TOKEN");
           localStorage.setItem("accessToken", data.accessToken);
         }
         mutate(process.env.REACT_APP_AUTH_API_BASEURL + "api/test/user").then(
           () => {
-            console.log("==========LOGINPAGE MUTATED!! SETTING POST DATA");
             setPostData(data);
           }
         );
       })
       .catch((error) => {
-        console.log({ error: true, ...error });
         setPostData({ error: true, ...error });
       });
   };

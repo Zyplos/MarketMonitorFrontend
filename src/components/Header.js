@@ -31,10 +31,6 @@ function Header() {
     );
   }
 
-  if (isError) {
-    console.log("Header useUser(): " + isError);
-  }
-
   return (
     <Flex
       sx={{

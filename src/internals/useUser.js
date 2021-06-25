@@ -11,8 +11,6 @@ function useUser() {
     }
   );
 
-  console.log("=========USE USER", data, error);
-
   return {
     user: data,
     isLoading: !error && !data,

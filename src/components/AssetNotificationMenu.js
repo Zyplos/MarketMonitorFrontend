@@ -30,7 +30,6 @@ function AssetNotificationsMenu({ revalidateAssetData, toast, ...props }) {
         ticker: ticker,
         val: parsedInt,
       };
-      console.log(body);
       fetch(url, {
         method: "POST",
         headers: {
@@ -39,7 +38,7 @@ function AssetNotificationsMenu({ revalidateAssetData, toast, ...props }) {
         },
         body: JSON.stringify(body),
       })
-        .then((response) => console.log(response.json()))
+        .then((response) => response.json())
         .then(() => {
           revalidateAssetData();
         })
@@ -72,7 +71,7 @@ function AssetNotificationsMenu({ revalidateAssetData, toast, ...props }) {
         },
         body: JSON.stringify(body),
       })
-        .then((response) => console.log(response.json()))
+        .then((response) => response.json())
         .then(() => {
           revalidateAssetData();
         })

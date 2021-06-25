@@ -6,6 +6,7 @@ import {
   Button,
   Spinner,
   Text,
+  Paragraph,
   Input,
 } from "@theme-ui/components";
 import toast, { Toaster } from "react-hot-toast";
@@ -16,6 +17,7 @@ import useSWR from "swr";
 import fetcherWithToken from "../internals/fetcherWithToken";
 import useUser from "../internals/useUser";
 import { useState } from "react";
+import { ReactComponent as ErrorIcon } from "../assets/error.svg";
 
 function AddAssets() {
   const accessToken = localStorage.getItem("accessToken");
@@ -31,12 +33,14 @@ function AddAssets() {
   const searchResultsMax = 10;
   let searchResultsCount = 0;
 
-  if (isError) {
-    console.log(isError);
-  }
-
   if (assetsError) {
-    console.log(assetsError);
+    return (
+      <FullBox useDims>
+        <ErrorIcon sx={{ mb: 3, fill: "#ff3e3e" }} />
+        <Paragraph>Unable to communicate with database.</Paragraph>
+        <Paragraph variant="muted">{assetsError?.toString()}</Paragraph>
+      </FullBox>
+    );
   }
 
   if (!user || !assetsData || !assetsData.symbols) {
@@ -67,8 +71,6 @@ function AddAssets() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("====================", data);
-
         if (data.message.includes("already tracked")) {
           toast.error(`${_ticker} is already being tracked.`);
           return;
@@ -81,7 +83,6 @@ function AddAssets() {
       })
       .catch((error) => {
         toast.error(error);
-        console.error("Error:", error);
       });
   }
 

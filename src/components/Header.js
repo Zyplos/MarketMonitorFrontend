@@ -4,6 +4,8 @@ import { Close, Flex, MenuButton } from "theme-ui";
 import useUser from "../internals/useUser";
 import ResponsiveLogo from "../components/ResponsiveLogo";
 import ThemedRouterNavLink from "./ThemedRouterNavLink";
+import Dropdown from "./Dropdown";
+import Profile from "./Profile";
 
 function Header() {
   const { user, isError } = useUser();
@@ -26,7 +28,11 @@ function Header() {
       <Fragment>
         <ThemedRouterNavLink to="/tracking">Tracking</ThemedRouterNavLink>
         <ThemedRouterNavLink to="/addassets">Add Assets</ThemedRouterNavLink>
-        <ThemedRouterNavLink to="/profile">Profile</ThemedRouterNavLink>
+        <Dropdown toggle={<ThemedRouterNavLink>Profile</ThemedRouterNavLink>}>
+          <div sx={{ p: 4 }}>
+            <Profile />
+          </div>
+        </Dropdown>
       </Fragment>
     );
   }
@@ -72,11 +78,7 @@ function Header() {
         }}
         onClick={showNavbar}
       >
-        {isOpen ? (
-          <Close color="white" />
-        ) : (
-          <MenuButton sx={{ display: "block", fill: "white" }} />
-        )}
+        {isOpen ? <Close color="white" /> : <MenuButton sx={{ display: "block", fill: "white" }} />}
       </div>
     </Flex>
   );

@@ -8,7 +8,6 @@ import ContactUsPage from "./pages/ContactUsPage";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoute from "./internals/PrivateRoute";
-import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -40,14 +39,6 @@ function App() {
 
         <PrivateRoute path="/addassets">
           <AddAssetsPage />
-        </PrivateRoute>
-
-        <PrivateRoute path="/profile">
-          <Profile />
-        </PrivateRoute>
-
-        <PrivateRoute path="/profile">
-          <Profile />
         </PrivateRoute>
 
         <Route path="*">

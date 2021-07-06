@@ -1,7 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
 import FullBox from "../components/FullBox";
 import ThemedRouterButtonLink from "../components/ThemedRouterButtonLink";
-import { Heading, Link, Button, Paragraph } from "theme-ui";
+import { Heading, Paragraph } from "theme-ui";
 
 function NotFoundPage() {
   return (

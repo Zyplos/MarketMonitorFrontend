@@ -1,11 +1,5 @@
 /** @jsxImportSource theme-ui */
-import {
-  Container,
-  Heading,
-  Paragraph,
-  Grid,
-  Link,
-} from "@theme-ui/components";
+import { Container, Heading, Paragraph, Grid, Link } from "@theme-ui/components";
 import { ReactComponent as A1 } from "../assets/a1temp.svg";
 import { ReactComponent as A2 } from "../assets/a2temp.svg";
 import { ReactComponent as A3 } from "../assets/a3temp.svg";
@@ -15,6 +9,8 @@ import { ReactComponent as GitHubSvg } from "../assets/github.svg";
 import { ReactComponent as LinkSvg } from "../assets/link.svg";
 import PlayStorePng from "../assets/get-on-playstore.png";
 import MainLayout from "../internals/MainLayout";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const avatarStyles = {
   width: "180px",
@@ -39,10 +35,18 @@ const LinkIcon = () => {
 };
 //test
 const PlayStoreImage = () => {
-  return <img src={PlayStorePng} alt="Get On Play Store" sx={{width: "200px"}}/>;
+  return <img src={PlayStorePng} alt="Get On Play Store" sx={{ width: "200px" }} />;
 };
 
 function AboutUs() {
+  const { hash } = useLocation();
+  console.log(hash);
+  useEffect(() => {
+    if (hash === "#disclaimer") {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, [hash]);
+
   return (
     <MainLayout>
       <Container mb={5}>
@@ -51,27 +55,22 @@ function AboutUs() {
         </Heading>
 
         <Paragraph>
-          MarketMonitor is a tool for monitoring stock prices. It was created to
-          help trading enthusiasts easily receive alerts on stock price changes.
-          Add a stock to your watchlist and then set price limits that will
-          trigger notifications once the stock price rises or drops. Create an
-          account and track your favorite stocks.
+          MarketMonitor is a tool for monitoring stock prices. It was created to help trading enthusiasts easily receive alerts on stock price changes. Add a stock to
+          your watchlist and then set price limits that will trigger notifications once the stock price rises or drops. Create an account and track your favorite stocks.
         </Paragraph>
-        <Paragraph>
-          Download our mobile app for faster access:
+        <Paragraph>Download our mobile app for faster access:</Paragraph>
+        <Paragraph sx={{ my: 3 }}>
+          <Link href="http://waelmobeirek.com/" target="_blank">
+            <PlayStoreImage />
+          </Link>
         </Paragraph>
-        <Link href="http://waelmobeirek.com/" target="_blank">
-                <PlayStoreImage/>
-              </Link>
-        <Paragraph>
-          MarketMonitor was created by a team of four students:
-        </Paragraph>
+        <Paragraph>MarketMonitor was created by a team of four students:</Paragraph>
 
         <Grid
           columns={[1, null, 2]}
           gap={4}
           sx={{
-            mt: 5,
+            my: 5,
             "> div": {
               display: "flex",
               flexDirection: "column",
@@ -134,7 +133,12 @@ function AboutUs() {
             </Paragraph>
           </div>
         </Grid>
-        <Paragraph>Disclaimer of Liability: Market Monitor is a student project. Prices shown may or may not reflect real-time prices due to delays. You should not rely upon the material or information on the website as a basis for making any business , legal, or any other decisions. The Market Monitor team is not liable for any loss or damage in connection with using our website or mobile application.</Paragraph>
+        <Heading>Disclaimer of Liability</Heading>
+        <Paragraph>
+          MarketMonitor is a student project. Prices shown may or may not reflect real-time prices due to delays. You should not rely upon the material or information on
+          the website as a basis for making any business, legal, or any other decisions. The MarketMonitor team is not liable for any loss or damage in connection with
+          using our website or mobile application.
+        </Paragraph>
       </Container>
     </MainLayout>
   );

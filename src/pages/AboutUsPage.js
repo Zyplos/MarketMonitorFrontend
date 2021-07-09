@@ -13,6 +13,7 @@ import { ReactComponent as A4 } from "../assets/a4temp.svg";
 import { ReactComponent as TwitterSvg } from "../assets/twitter.svg";
 import { ReactComponent as GitHubSvg } from "../assets/github.svg";
 import { ReactComponent as LinkSvg } from "../assets/link.svg";
+import PlayStorePng from "../assets/get-on-playstore.png";
 import MainLayout from "../internals/MainLayout";
 
 const avatarStyles = {
@@ -36,6 +37,10 @@ const GitHubIcon = () => {
 const LinkIcon = () => {
   return <LinkSvg sx={iconStyles} />;
 };
+//test
+const PlayStoreImage = () => {
+  return <img src={PlayStorePng} alt="Get On Play Store" sx={{width: "200px"}}/>;
+};
 
 function AboutUs() {
   return (
@@ -50,8 +55,14 @@ function AboutUs() {
           help trading enthusiasts easily receive alerts on stock price changes.
           Add a stock to your watchlist and then set price limits that will
           trigger notifications once the stock price rises or drops. Create an
-          account or download our Android app to get started.
+          account and track your favorite stocks.
         </Paragraph>
+        <Paragraph>
+          Download our mobile app for faster access:
+        </Paragraph>
+        <Link href="http://waelmobeirek.com/" target="_blank">
+                <PlayStoreImage/>
+              </Link>
         <Paragraph>
           MarketMonitor was created by a team of four students:
         </Paragraph>
@@ -123,6 +134,7 @@ function AboutUs() {
             </Paragraph>
           </div>
         </Grid>
+        <Paragraph>Disclaimer of Liability: Market Monitor is a student project. Prices shown may or may not reflect real-time prices due to delays. You should not rely upon the material or information on the website as a basis for making any business , legal, or any other decisions. The Market Monitor team is not liable for any loss or damage in connection with using our website or mobile application.</Paragraph>
       </Container>
     </MainLayout>
   );

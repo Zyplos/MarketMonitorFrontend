@@ -40,7 +40,6 @@ const PlayStoreImage = () => {
 
 function AboutUs() {
   const { hash } = useLocation();
-  console.log(hash);
   useEffect(() => {
     if (hash === "#disclaimer") {
       window.scrollTo(0, document.body.scrollHeight);
@@ -60,7 +59,7 @@ function AboutUs() {
         </Paragraph>
         <Paragraph>Download our mobile app for faster access:</Paragraph>
         <Paragraph sx={{ my: 3 }}>
-          <Link href="http://waelmobeirek.com/" target="_blank">
+          <Link href="https://play.google.com/store/apps/details?id=com.marketmonitor.marketmonitormobile" target="_blank">
             <PlayStoreImage />
           </Link>
         </Paragraph>

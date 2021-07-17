@@ -8,6 +8,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoute from "./internals/PrivateRoute";
+import AndroidRedirect from "./pages/AndroidRedirect";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
 
         <Route path="/contactus">
           <ContactUsPage />
+        </Route>
+
+        <Route path="/android">
+          <AndroidRedirect />
         </Route>
 
         <PrivateRoute path="/addassets">
